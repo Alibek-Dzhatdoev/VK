@@ -5,7 +5,6 @@ import com.dzhatdoev.vk.model.Post;
 import com.dzhatdoev.vk.model.User;
 import com.dzhatdoev.vk.repo.PostRepository;
 import com.dzhatdoev.vk.util.exceptions.PostNotFoundException;
-import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +12,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @Transactional(readOnly = true)
@@ -26,8 +26,7 @@ public class PostService {
         this.userService = userService;
     }
 
-
-    public Post findByIdOrThrown (long id) {
+    public Post findByIdOrThrown(long id) {
         return postRepository.findById(id).orElseThrow(() -> new PostNotFoundException("Post with that id does not exist"));
     }
 

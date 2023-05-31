@@ -2,7 +2,6 @@ package com.dzhatdoev.vk.service;
 
 import com.dzhatdoev.vk.DTO.UserDTO;
 import com.dzhatdoev.vk.DTO.UserDTOForOwner;
-import com.dzhatdoev.vk.model.Post;
 import com.dzhatdoev.vk.model.User;
 import com.dzhatdoev.vk.repo.UserRepository;
 import com.dzhatdoev.vk.util.exceptions.PersonNotCreatedException;
@@ -95,7 +94,6 @@ public class UserService {
     }
 
 
-
     public List<UserDTO> getFriends(long id) {
         User user = findByIdOrThrown(id);
         List<User> friends = user.getFriends();
@@ -130,11 +128,9 @@ public class UserService {
             currentUser.getFriends().add(targetUser);
             targetUser.getSubscriptions().remove(currentUser);
             return "Friend added!";
-        } else if (currentUser.getFriends().contains(targetUser))
-        {//Если есть в друзьях, то не будет кнопки "Добавить в друзья"
+        } else if (currentUser.getFriends().contains(targetUser)) {//Если есть в друзьях, то не будет кнопки "Добавить в друзья"
             return "User already is your friend";
-        } else
-        {
+        } else {
             //если нет в друзьях и нет в подписчиках
             currentUser.getSubscriptions().add(targetUser);
             return "You have sent a friend request.";

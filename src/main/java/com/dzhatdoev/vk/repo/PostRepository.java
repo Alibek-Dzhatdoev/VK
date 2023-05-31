@@ -8,6 +8,8 @@ import java.util.Optional;
 
 public interface PostRepository extends JpaRepository<Post, Integer> {
     Optional<Post> findById(long id);
-    List<Post> findByTitleContainingIgnoreCaseOrTextContainingIgnoreCase (String st1, String st2);
+
+    List<Post> findByTitleContainingIgnoreCaseOrTextContainingIgnoreCase(String st1, String st2);
+
     void deleteById(long id);
 }

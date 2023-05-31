@@ -12,6 +12,7 @@ public class RegistrationRequest {
     @NotEmpty(message = "Login must not be empty")
     @Size(min = 2, max = 50, message = "Username must be between 2 and 50 characters")
     private String username;
+
     @Email(message = "Must be in email format")
     @NotEmpty(message = "Email must not be empty")
     private String email;

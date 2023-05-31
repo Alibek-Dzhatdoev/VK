@@ -87,7 +87,7 @@ public class UserController {
 
     //отклонить заявку (оставить в подписчиках)
     @GetMapping({"/{id}/decline"})
-    public ResponseEntity<?> declineRequest (@PathVariable long id) {
+    public ResponseEntity<?> declineRequest(@PathVariable long id) {
         userService.declineFriendRequest(id);
         return ResponseEntity.ok().build();
     }
@@ -96,8 +96,8 @@ public class UserController {
     //отправить сообщение другу ++
     //отправка сообщений не реализована (как и сказано в тз)
     @PostMapping("/{id}/correspondence")
-    public ResponseEntity<?> sendMessage (@RequestBody String message,
-                                          @PathVariable("id") long userId) {
+    public ResponseEntity<?> sendMessage(@RequestBody String message,
+                                         @PathVariable("id") long userId) {
         return ResponseEntity.ok().build();
     }
 

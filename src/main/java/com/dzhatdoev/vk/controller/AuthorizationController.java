@@ -1,6 +1,5 @@
 package com.dzhatdoev.vk.controller;
 
-import com.dzhatdoev.vk.DTO.LoginRequest;
 import com.dzhatdoev.vk.DTO.RegistrationRequest;
 import com.dzhatdoev.vk.DTO.UserDTO;
 import com.dzhatdoev.vk.model.User;
@@ -11,7 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -23,7 +21,7 @@ public class AuthorizationController {
 
     //Создание учетной записи юзера
     @GetMapping("/registration")
-    public String registrationPage(@ModelAttribute ("user") User user) {
+    public String registrationPage(@ModelAttribute("user") User user) {
         return "registration";
     }
 
