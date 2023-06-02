@@ -1,4 +1,4 @@
-package com.dzhatdoev.vk.DTO;
+package com.dzhatdoev.vk.DTO.Requests;
 
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;

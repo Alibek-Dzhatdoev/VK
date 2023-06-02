@@ -9,6 +9,7 @@ import com.dzhatdoev.vk.util.exceptions.PersonNotFoundException;
 import com.dzhatdoev.vk.util.exceptions.PersonNotLoggedException;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.Hibernate;
+import org.springframework.data.domain.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -28,9 +29,32 @@ public class UserService {
     private final PostService postService;
 
 
-    public List<User> findAll() {
-        Hibernate.initialize(userRepository.findAll());
-        return userRepository.findAll();
+    public Page<UserDTO> findAll(int page, int size) {
+        Pageable pageable = PageRequest.of(page, size, Sort.by("username"));
+        Page<User> userPage = userRepository.findAllByOrderByUsername(pageable);
+        List<UserDTO> userDtoList = userPage.getContent().stream()
+                .map(UserDTO::convertToDto).toList();
+        return new PageImpl<>(userDtoList, pageable, userPage.getTotalElements());
+    }
+
+    public List<UserDTO> getFriends(long id) {
+        User user = findByIdOrThrown(id);
+        List<User> friends = user.getFriends();
+        friends.addAll(user.getFriendsWith());
+        return UserDTO.convertToDtoList(friends);
+    }
+
+    public List<UserDTO> getSubscribers(long id) {
+        User current = getCurrentUser();
+        if (current.getId() == id) return UserDTO.convertToDtoList(current.getSubscribers());
+        return UserDTO.convertToDtoList(findByIdOrThrown(id).getSubscribers());
+    }
+
+    public List<UserDTO> getSubscriptions(long id) {
+        User current = getCurrentUser();
+        Hibernate.initialize(current.getSubscriptions());
+        if (current.getId() == id) return UserDTO.convertToDtoList(current.getSubscriptions());
+        return UserDTO.convertToDtoList(findByIdOrThrown(id).getSubscriptions());
     }
 
     @Transactional()
@@ -94,27 +118,7 @@ public class UserService {
     }
 
 
-    public List<UserDTO> getFriends(long id) {
-        User user = findByIdOrThrown(id);
-        List<User> friends = user.getFriends();
-        System.out.println(friends);
-        System.out.println(user.getFriendsWith());
-        friends.addAll(user.getFriendsWith());
-        return UserDTO.convertToDtoList(friends);
-    }
 
-    public List<UserDTO> getSubscribers(long id) {
-        User current = getCurrentUser();
-        if (current.getId() == id) return UserDTO.convertToDtoList(current.getSubscribers());
-        return UserDTO.convertToDtoList(findByIdOrThrown(id).getSubscribers());
-    }
-
-    public List<UserDTO> getSubscriptions(long id) {
-        User current = getCurrentUser();
-        Hibernate.initialize(current.getSubscriptions());
-        if (current.getId() == id) return UserDTO.convertToDtoList(current.getSubscriptions());
-        return UserDTO.convertToDtoList(findByIdOrThrown(id).getSubscriptions());
-    }
 
     @Transactional
     public String subscribe(long userId) {

@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +27,7 @@ public class UserDTO {
 
     private boolean canISubscribe = true;
 
-    private List<PostDTO> postDTOList;
+    private Page<PostDTOOut> postPage;
 
     public static UserDTO convertToDto(User user) {
         return modelMapper.map(user, UserDTO.class);

@@ -1,5 +1,6 @@
 package com.dzhatdoev.vk.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
@@ -39,24 +40,29 @@ public class User {
 
     @OneToMany(mappedBy = "author")
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
+    @JsonIgnore
     private List<Post> posts;
 
     @ManyToMany
+    @JsonIgnore
     @JoinTable(name = "friendship",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "friend_id"))
     private List<User> friends;
 
     @ManyToMany(mappedBy = "friends")
+    @JsonIgnore
     private List<User> friendsWith;
 
     @ManyToMany
+    @JsonIgnore
     @JoinTable(name = "subscriptions",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "target_user_id"))
     private List<User> subscriptions;
 
     @ManyToMany(mappedBy = "subscriptions")
+    @JsonIgnore
     private List<User> subscribers;
 
 
@@ -64,16 +70,6 @@ public class User {
         this.username = username;
         this.email = email;
         this.password = password;
-    }
-
-    public void addFriend(User friend) {
-        friends.add(friend);
-        friend.getFriends().add(this);
-    }
-
-    public void removeFriend(User friend) {
-        friends.remove(friend);
-        friend.getFriends().remove(this);
     }
 
     @Override

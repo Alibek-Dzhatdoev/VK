@@ -1,9 +1,6 @@
 package com.dzhatdoev.vk.util;
 
-import com.dzhatdoev.vk.util.exceptions.PersonNotCreatedException;
-import com.dzhatdoev.vk.util.exceptions.PersonNotFoundException;
-import com.dzhatdoev.vk.util.exceptions.PersonNotLoggedException;
-import com.dzhatdoev.vk.util.exceptions.PostNotFoundException;
+import com.dzhatdoev.vk.util.exceptions.*;
 import jakarta.validation.ConstraintViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.AccessDeniedException;
@@ -56,6 +53,12 @@ public class ExceptionControllerHandler {
     @ResponseStatus(HttpStatus.FORBIDDEN)
     @ExceptionHandler(PersonNotLoggedException.class)
     private ErrorResponse onPersonNotLoggedException(PersonNotLoggedException e) {
+        return new ErrorResponse(e.getMessage(), LocalDateTime.now());
+    }
+
+    @ResponseStatus(HttpStatus.NOT_ACCEPTABLE)
+    @ExceptionHandler(InvalidImageException.class)
+    private ErrorResponse onInvalidImageException(InvalidImageException e) {
         return new ErrorResponse(e.getMessage(), LocalDateTime.now());
     }
 

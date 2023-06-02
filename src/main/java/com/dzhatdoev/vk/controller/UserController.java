@@ -1,20 +1,16 @@
 package com.dzhatdoev.vk.controller;
 
-import com.dzhatdoev.vk.DTO.PostDTO;
 import com.dzhatdoev.vk.DTO.UserDTO;
 import com.dzhatdoev.vk.DTO.UserDTOForOwner;
-import com.dzhatdoev.vk.model.Post;
 import com.dzhatdoev.vk.model.User;
 import com.dzhatdoev.vk.service.PostService;
 import com.dzhatdoev.vk.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Collections;
-import java.util.List;
 
 @RestController
 @RequestMapping("/users")
@@ -25,16 +21,18 @@ public class UserController {
 
     //  Посмотреть список всех людей ++
     @GetMapping
-    public ResponseEntity<?> getAllUsers() {
-        List<User> users = userService.findAll();
-        users.remove(userService.getCurrentUser());
-        return ResponseEntity.ok(UserDTO.convertToDtoList(users));
+    public ResponseEntity<?> getAllUsers(@RequestParam(required = false, defaultValue = "1") int page,
+                                         @RequestParam(required = false, defaultValue = "100") int size) {
+        Page<UserDTO> users = userService.findAll(page-1, size);
+        return ResponseEntity.ok(users);
     }
 
     //Посмотреть профиль человека  ++
     //Посмотреть посты человека  ++
     @GetMapping("/{id}")
-    public ResponseEntity<?> getUserById(@PathVariable long id) {
+    public ResponseEntity<?> getUserById(@PathVariable long id,
+                                         @RequestParam(required = false, defaultValue = "1") int page,
+                                         @RequestParam(required = false, defaultValue = "10") int size) {
         User user = userService.findByIdOrThrown(id);
         User currentUser = userService.getCurrentUser();
         UserDTO userToShow = UserDTO.convertToDto(user);
@@ -42,19 +40,17 @@ public class UserController {
         //if there is false - there should not be "subscribe" button on the browser page
         if (currentUser.equals(user) || currentUser.getFriends().contains(user) || currentUser.getSubscriptions().contains(user))
             userToShow.setCanISubscribe(false);
-        List<Post> usersPosts = user.getPosts();
-        Collections.reverse(usersPosts); //чтобы было отсортировано от новых к старым
-        System.out.println(usersPosts);
-        userToShow.setPostDTOList(PostDTO.convertToDtoList(usersPosts));
+        userToShow.setPostPage(postService.getUserPosts(user.getId(), page , size));
         return ResponseEntity.ok(userToShow);
     }
 
     //    Посмотреть свой профиль    ++
     @GetMapping("/my_page")
-    public ResponseEntity<?> goToMyPage() {
+    public ResponseEntity<?> goToMyPage(@RequestParam(required = false, defaultValue = "1") int page,
+                                        @RequestParam(required = false, defaultValue = "100") int size) {
         User me = userService.getCurrentUser();
         UserDTOForOwner userDTOForOwner = UserDTOForOwner.convertToDto(me);
-        userDTOForOwner.setPostDTOList(PostDTO.convertToDtoList(me.getPosts()));
+        userDTOForOwner.setPostPage(postService.getUserPosts(me.getId(), page, size));
         return ResponseEntity.ok(userDTOForOwner);
     }
 

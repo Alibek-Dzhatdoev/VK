@@ -1,5 +1,6 @@
 package com.dzhatdoev.vk.DTO;
 
+import com.dzhatdoev.vk.model.Post;
 import com.dzhatdoev.vk.model.User;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
@@ -8,8 +9,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.modelmapper.ModelMapper;
-
-import java.util.List;
+import org.springframework.data.domain.Page;
 
 @Getter
 @Setter
@@ -26,7 +26,7 @@ public class UserDTOForOwner {
     @NotEmpty(message = "Email must not be empty")
     private String email;
 
-    private List<PostDTO> postDTOList;
+    private Page<PostDTOOut> postPage;
 
     public static UserDTOForOwner convertToDto(User user) {
         return modelMapper.map(user, UserDTOForOwner.class);

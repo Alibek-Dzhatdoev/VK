@@ -1,4 +1,4 @@
-package com.dzhatdoev.vk.DTO;
+package com.dzhatdoev.vk.DTO.Requests;
 
 import com.dzhatdoev.vk.model.User;
 import jakarta.validation.constraints.Email;

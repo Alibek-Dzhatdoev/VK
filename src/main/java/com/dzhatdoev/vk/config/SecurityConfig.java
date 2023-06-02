@@ -32,6 +32,7 @@ public class SecurityConfig {
         return auth.build();
     }
 
+
     @Bean
     public BCryptPasswordEncoder getPasswordEncoder() {
         return new BCryptPasswordEncoder();
@@ -43,7 +44,7 @@ public class SecurityConfig {
         http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/auth/login", "/auth/registration", "/users", "/auth/registrationform").permitAll()
-                        .anyRequest().authenticated())
+                        .anyRequest().permitAll())
                 .formLogin(formLogin -> formLogin
                         .loginProcessingUrl("/process_login")
                         .defaultSuccessUrl("/users", true))

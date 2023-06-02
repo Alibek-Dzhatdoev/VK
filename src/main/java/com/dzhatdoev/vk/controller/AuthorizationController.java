@@ -1,6 +1,6 @@
 package com.dzhatdoev.vk.controller;
 
-import com.dzhatdoev.vk.DTO.RegistrationRequest;
+import com.dzhatdoev.vk.DTO.Requests.RegistrationRequest;
 import com.dzhatdoev.vk.DTO.UserDTO;
 import com.dzhatdoev.vk.model.User;
 import com.dzhatdoev.vk.service.RegistrationService;

@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "inspired-vault-387917",
+  "private_key_id": "7abb7a4835c353816b9a697dc2144db5142be739",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDd5HGujZWuPSNK\nT1B04pvxk9kBR9zidb591tbL8WhdvS2eq5ovL5MlKzPHwK1S97iomezz/16WkfVK\nv/kRCGYT4eORsau2YrxRWHhLjtOyTrawysBMEXIqxVJnMujmHYjYsTyOAP4YIWK1\nY1d6yJ6UG82iX70iWH76fNdtB3cM8Gur1ME8I3r96KK9Eup91B5XtzkBBKLG1BO5\nsr0rIi2FrwXYRACZ+GVt6FSuvQDOL3Wd1FVNsT9CvZzj093I4/eXbjj/+G/O1qWo\nFsgT9Ga4vrb8/4JTqleLlDiFZVGAVTeWXkE5R/cJhZ6omANBoGP3N/T0WmjtvG/B\n1LXYGwWJAgMBAAECggEAAOC99jwglkUEZ4S8ZiFSjzWqf1ZsvazMKpoKdUSGHnnT\nQoGTYsyoGGwXyzpm99ExAYzDWtyc/+ZBr3smiyj/+Lk/8d7UtbblX8KEeP25NsdC\n3THzfxGMxLXNZh5gfMRA5c+UtGCgC2claXTkSZZzMdWRfkBtTS5HCVVsB5txaYNk\n8i9OxJOSv6sxefofPBlyNkVPLzGBoCxjDsP0AB1FaD5G0DiBPIsq/6uN43YFNtt8\ng3NG6L26PcBUeGsNaDHty1YBNBMT+HqEeG857VxDHXPr9gzF/rLgR5jwlEQzRusn\neQ6GajLxgw4zgjLE8H3D/5mumRO02JC6ezSv4XggEQKBgQDvolmDqQCx+0x0kKof\nMC30RxYcDFxdeW9hGIVuNLcGbMJBkG2l/8P/MyCR844UN0+JbWqAjBxQvP7zMOpk\nmiF6PrDMZUPz/HC3fzQh87t25USFnYxk3tAcUy+LgWZxw3QOHUWQg3Mh0+XV+wTb\ngg1ez3UuWSZYbo5HlLqHYmeS8QKBgQDtC+ek3M5L4JBvqT9S6+RNziE4GpqLeGkz\nUo1ZbV4XPsEv5kYLPbKxA2XWDQOOdqvjM4qCgQZyuAbtvhQ5N1BX0HwPBSNtvO+g\nnxXg6Ipp6o92t8mf4/go5iXj0CyThANKQdm8itvn7aDfXKEhJ+cdpCXN4PXbp4uT\nZ6O+KgBsGQKBgQDd79XJy4daT60CtEzrL7sP55qBha0x4VsXaReC9w2fxLCw+mui\n91t2CssagaDP9l4SoKSnw5wh5riVUXN0kw94YYFq/ErQOLfIKuaEn3C68CHjQgQa\nFAZYhW6eXM0dhfEBdXjNHAFQjijqYl6gUjXB3o/fyi9qbZIWl5ed9bSJcQKBgQDd\n3bKmX/TGmB0YJfUbC6bYHAKDnILh34W3f6DE/tR+NUJkLseIZesGOwPp4KxffztK\noEcX9uOuJAh4JNyQ4PDWAFDdThXm9FvknoG/zGcg02YL2+FfQeRXg3IbVBEk0P6z\nVgcRrXY+Ee/sn6pAejSbTbQEinYTbTH6eZqMtotGoQKBgQCVqQVxWVYOql5Wy80H\nNRHiGCYPnUiqj6sc021JiIMQSLRW1kAz15RRQvyerUo0YCuoWtsawfCe4Ym4IZk8\nbtj8Ahy7le7Yxdw9KzzoLfXPfqg4lme9AMrOCJQbe6OqT1okOwfe/2Xg6SdhtYbv\ni4bzBh68DfHUcZpGkQWS0UuaXw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "vk-949@inspired-vault-387917.iam.gserviceaccount.com",
+  "client_id": "105896557329120230522",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/vk-949%40inspired-vault-387917.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
