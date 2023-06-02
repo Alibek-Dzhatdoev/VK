@@ -5,7 +5,6 @@ import com.google.cloud.storage.*;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -50,7 +49,7 @@ public class CloudStorageService {
         Blob blob = storage.get(bucketName, imageName);
         // Чтение данных изображения в массив байтов
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        if (blob == null) return null;
+        if (blob == null) return "";
         blob.downloadTo(outputStream);
         return Base64.getEncoder().encodeToString(outputStream.toByteArray());
     }

@@ -7,7 +7,6 @@ import com.dzhatdoev.vk.util.GoogleCloudStorage.CloudStorageService;
 import com.dzhatdoev.vk.util.exceptions.InvalidImageException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
@@ -40,7 +39,6 @@ public class PostConverter {
         }
         return post;
     }
-
 
     public static Page<PostDTOOut> convertToDtoPage(Page<Post> postPage) {
         return postPage.map(PostConverter::convertToDto);
