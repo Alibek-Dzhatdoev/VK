@@ -1,6 +1,5 @@
 package com.dzhatdoev.vk.DTO;
 
-import com.dzhatdoev.vk.model.Post;
 import com.dzhatdoev.vk.model.User;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;

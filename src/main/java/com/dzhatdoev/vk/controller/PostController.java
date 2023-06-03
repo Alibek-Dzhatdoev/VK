@@ -1,6 +1,7 @@
 package com.dzhatdoev.vk.controller;
 
 import com.dzhatdoev.vk.DTO.PostDTO;
+import com.dzhatdoev.vk.security.JWTUtil;
 import com.dzhatdoev.vk.service.PostService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

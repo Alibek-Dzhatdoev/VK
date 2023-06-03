@@ -10,4 +10,6 @@ public class VkApplication {
         SpringApplication.run(VkApplication.class, args);
     }
 
+
+
 }
